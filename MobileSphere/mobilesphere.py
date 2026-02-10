@@ -157,7 +157,7 @@ st.markdown("""
 # ----------------------------- 
 # LOAD DATA 
 # ----------------------------- 
-data_path = r"E:\BA BI\Project BBC\project1\MobileSphere\Phone_Sales_Dataset.xlsx"
+data_path = r"Phone_Sales_Dataset.xlsx"
 df = pd.read_excel(data_path)
 
 brand_map = {
@@ -169,7 +169,7 @@ brand_map = {
 # ----------------------------- 
 # LOAD MODEL 
 # ----------------------------- 
-model_path = r"E:\BA BI\Project BBC\project1\MobileSphere\phone_sales_model.pkl"
+model_path = r"phone_sales_model.pkl"
 with open(model_path, "rb") as file:
     Model = pickle.load(file)
 

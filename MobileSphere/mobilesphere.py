@@ -10,7 +10,7 @@ import sklearn
 
 print("Sklearn:", sklearn.__version__)
 
-joblib.dump(trained_model, "phone_sales_model.pkl", compress=3)
+joblib.dump(model, "phone_sales_model.pkl", compress=3)
 
 st.write("Python version:", sys.version)
 

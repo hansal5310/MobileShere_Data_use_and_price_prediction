@@ -3,6 +3,7 @@ import pandas as pd
 import pickle
 import io
 import sqlite3
+import os
 
 # ----------------------------- 
 # PAGE CONFIG 
@@ -153,11 +154,11 @@ st.markdown("""
     Predict phone price ratios with AI-powered machine learning
 </p>
 """, unsafe_allow_html=True)
-
+BASE_DIR = os.path.dirname(__file__)
 # ----------------------------- 
 # LOAD DATA 
 # ----------------------------- 
-data_path = r"Phone_Sales_Dataset.xlsx"
+data_path = os.path.join(BASE_DIR, "Phone_Sales_Dataset.xlsx")
 df = pd.read_excel(data_path)
 
 brand_map = {
@@ -169,7 +170,7 @@ brand_map = {
 # ----------------------------- 
 # LOAD MODEL 
 # ----------------------------- 
-model_path = r"phone_sales_model.pkl"
+model_path = os.path.join(BASE_DIR, "phone_sales_model.pkl")
 with open(model_path, "rb") as file:
     Model = pickle.load(file)
 

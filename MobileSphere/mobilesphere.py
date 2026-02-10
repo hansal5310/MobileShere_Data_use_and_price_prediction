@@ -5,6 +5,20 @@ import io
 import sqlite3
 import os
 import joblib
+from xgboost import XGBRegressor
+
+model = XGBRegressor(
+    n_estimators=300,
+    learning_rate=0.05,
+    max_depth=6,
+    subsample=0.8,
+    colsample_bytree=0.8,
+    tree_method="hist",   # ✅ CPU SAFE
+    predictor="cpu_predictor",
+    random_state=42
+)
+
+model.fit(x_train, y_train)
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 

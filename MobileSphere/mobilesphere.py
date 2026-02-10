@@ -1,19 +1,8 @@
-from pyexpat import model
 import streamlit as st
 import pandas as pd
 import pickle
 import io
 import sqlite3
-import os
-import sys
-import joblib
-import sklearn
-
-print("Sklearn:", sklearn.__version__)
-
-joblib.dump(model, "phone_sales_model.pkl", compress=3)
-
-st.write("Python version:", sys.version)
 
 # ----------------------------- 
 # PAGE CONFIG 
@@ -164,11 +153,11 @@ st.markdown("""
     Predict phone price ratios with AI-powered machine learning
 </p>
 """, unsafe_allow_html=True)
-BASE_DIR = os.path.dirname(__file__)
+
 # ----------------------------- 
 # LOAD DATA 
 # ----------------------------- 
-data_path = os.path.join(BASE_DIR,"Phone_Sales_Dataset.xlsx")
+data_path = r"E:\BA BI\Project BBC\project1\MobileSphere\Phone_Sales_Dataset.xlsx"
 df = pd.read_excel(data_path)
 
 brand_map = {
@@ -180,18 +169,10 @@ brand_map = {
 # ----------------------------- 
 # LOAD MODEL 
 # ----------------------------- 
+model_path = r"E:\BA BI\Project BBC\project1\MobileSphere\phone_sales_model.pkl"
+with open(model_path, "rb") as file:
+    Model = pickle.load(file)
 
-
-BASE_DIR = os.path.dirname(__file__)
-model_path = os.path.join(BASE_DIR, "phone_sales_model.pkl")
-
-try:
-    Model = joblib.load(model_path)
-    st.success("✅ Model loaded successfully")
-except Exception as e:
-    st.error("❌ Model failed to load")
-    st.code(str(e))
-    st.stop()
 
 # ====================================================== 
 # TABS 

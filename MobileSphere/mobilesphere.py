@@ -4,6 +4,8 @@ import pickle
 import io
 import sqlite3
 import os
+import sys
+st.write("Python version:", sys.version)
 
 # ----------------------------- 
 # PAGE CONFIG 

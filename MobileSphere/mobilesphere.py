@@ -1,4 +1,3 @@
-from xml.parsers.expat import model
 import streamlit as st
 import pandas as pd
 import pickle
@@ -9,9 +8,9 @@ import sys
 import joblib
 import sklearn
 
-print("Sklearn version:", sklearn.__version__)
+print("Sklearn:", sklearn.__version__)
 
-joblib.dump(model, "phone_sales_model.pkl", compress=3)
+joblib.dump(trained_model, "phone_sales_model.pkl", compress=3)
 
 st.write("Python version:", sys.version)
 
@@ -182,9 +181,9 @@ brand_map = {
 # ----------------------------- 
 
 
+BASE_DIR = os.path.dirname(__file__)
 model_path = os.path.join(BASE_DIR, "phone_sales_model.pkl")
 
-Model = None
 try:
     Model = joblib.load(model_path)
     st.success("✅ Model loaded successfully")

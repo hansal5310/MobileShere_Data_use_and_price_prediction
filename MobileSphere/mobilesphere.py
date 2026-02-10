@@ -3,7 +3,19 @@ import pandas as pd
 import pickle
 import io
 import sqlite3
+import os
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+DATA_PATH = os.path.join(BASE_DIR, "Phone_Sales_Dataset.xlsx")
+MODEL_PATH = os.path.join(BASE_DIR, "phone_sales_model.pkl")
+
+# ---- Load dataset ----
+df = pd.read_excel(DATA_PATH)
+
+# ---- Load model ----
+with open(MODEL_PATH, "rb") as f:
+    Model = pickle.load(f)
 # ----------------------------- 
 # PAGE CONFIG 
 # ----------------------------- 
@@ -157,8 +169,7 @@ st.markdown("""
 # ----------------------------- 
 # LOAD DATA 
 # ----------------------------- 
-data_path = r"E:\BA BI\Project BBC\project1\MobileSphere\Phone_Sales_Dataset.xlsx"
-df = pd.read_excel(data_path)
+
 
 brand_map = {
     b.lower(): i for i, b in enumerate(
@@ -169,9 +180,7 @@ brand_map = {
 # ----------------------------- 
 # LOAD MODEL 
 # ----------------------------- 
-model_path = r"E:\BA BI\Project BBC\project1\MobileSphere\phone_sales_model.pkl"
-with open(model_path, "rb") as file:
-    Model = pickle.load(file)
+
 
 
 # ====================================================== 

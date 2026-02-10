@@ -4,11 +4,16 @@ import pickle
 import io
 import sqlite3
 import os
+import joblib
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 DATA_PATH = os.path.join(BASE_DIR, "Phone_Sales_Dataset.xlsx")
 MODEL_PATH = os.path.join(BASE_DIR, "phone_sales_model.pkl")
+
+Model = joblib.load(MODEL_PATH)
+
+joblib.dump(Model, "phone_sales_model.pkl")
 
 # ---- Load dataset ----
 df = pd.read_excel(DATA_PATH)

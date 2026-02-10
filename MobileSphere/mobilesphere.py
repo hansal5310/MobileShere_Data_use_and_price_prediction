@@ -1,3 +1,4 @@
+from xml.parsers.expat import model
 import streamlit as st
 import pandas as pd
 import pickle
@@ -5,6 +6,13 @@ import io
 import sqlite3
 import os
 import sys
+import joblib
+import sklearn
+
+print("Sklearn version:", sklearn.__version__)
+
+joblib.dump(model, "phone_sales_model.pkl", compress=3)
+
 st.write("Python version:", sys.version)
 
 # ----------------------------- 
@@ -172,10 +180,18 @@ brand_map = {
 # ----------------------------- 
 # LOAD MODEL 
 # ----------------------------- 
-import joblib
+
 
 model_path = os.path.join(BASE_DIR, "phone_sales_model.pkl")
-Model = joblib.load(model_path)
+
+Model = None
+try:
+    Model = joblib.load(model_path)
+    st.success("✅ Model loaded successfully")
+except Exception as e:
+    st.error("❌ Model failed to load")
+    st.code(str(e))
+    st.stop()
 
 # ====================================================== 
 # TABS 

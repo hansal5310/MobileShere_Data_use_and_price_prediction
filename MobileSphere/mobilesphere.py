@@ -158,7 +158,7 @@ BASE_DIR = os.path.dirname(__file__)
 # ----------------------------- 
 # LOAD DATA 
 # ----------------------------- 
-data_path = os.path.join(BASE_DIR, "Phone_Sales_Dataset.xlsx")
+data_path = os.path.join(BASE_DIR,"Phone_Sales_Dataset.xlsx")
 df = pd.read_excel(data_path)
 
 brand_map = {
@@ -170,10 +170,10 @@ brand_map = {
 # ----------------------------- 
 # LOAD MODEL 
 # ----------------------------- 
-model_path = os.path.join(BASE_DIR, "phone_sales_model.pkl")
-with open(model_path, "rb") as file:
-    Model = pickle.load(file)
+import joblib
 
+model_path = os.path.join(BASE_DIR, "phone_sales_model.pkl")
+Model = joblib.load(model_path)
 
 # ====================================================== 
 # TABS 

@@ -19,8 +19,6 @@ joblib.dump(Model, "phone_sales_model.pkl")
 # ---- Load dataset ----
 df = pd.read_excel(DATA_PATH)
 
-
-
 # ----------------------------- 
 # PAGE CONFIG 
 # ----------------------------- 
@@ -174,14 +172,11 @@ st.markdown("""
 # ----------------------------- 
 # LOAD DATA 
 # ----------------------------- 
-
-
 brand_map = {
     b.lower(): i for i, b in enumerate(
         df["brand_name"].astype("category").cat.categories
     )
 }
-
 
 # ====================================================== 
 # TABS 

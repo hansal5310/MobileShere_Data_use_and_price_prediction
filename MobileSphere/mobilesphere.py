@@ -18,7 +18,7 @@ model = XGBRegressor(
     random_state=42
 )
 
-model.fit(x_train, y_train)
+
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -32,9 +32,10 @@ joblib.dump(Model, "phone_sales_model.pkl")
 # ---- Load dataset ----
 df = pd.read_excel(DATA_PATH)
 
-# ---- Load model ----
-with open(MODEL_PATH, "rb") as f:
-    Model = pickle.load(f)
+# assume model is already trained
+model.save_model("phone_sales_model.json")
+
+
 # ----------------------------- 
 # PAGE CONFIG 
 # ----------------------------- 

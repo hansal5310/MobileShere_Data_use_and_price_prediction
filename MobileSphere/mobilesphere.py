@@ -263,7 +263,7 @@ with tab2:
     sample_df = pd.DataFrame({
         "brand_name": [
             "Samsung", "Apple", "Xiaomi", "OnePlus", "Realme",
-            "Oppo", "Vivo", "Motorola", "Nokia", "Infinix"
+            "Oppo", "Vivo", "Motorola", "Nokia", "Sony"
         ],
         "popularity": [
             1200, 2500, 1800, 1600, 1400, 1300, 1250, 900, 700, 850
